@@ -1,0 +1,92 @@
+:root {
+    --font-basic:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color:darkgray
+}
+.tableContainer {
+    height: 500px;
+    /* width: 500px; */
+    /* background-color:green; */
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    align-items: center;
+    /* overflow: hidden; */
+    background-image: url('./table.jfif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: top;
+    
+}
+
+.dealerContainer {
+    color: aliceblue;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+    display: block;
+    justify-content: center;
+}
+
+.warning {
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerContainer {
+    color: aliceblue;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+}
+
+.buttonsContainer {
+    display: none;
+}
+
+.button {
+    height: 35px;
+    width: 110px;
+    background: transparent;
+    border-radius: 10px;
+    border: solid 2px aliceblue;
+    color: aliceblue;
+    margin: 0;
+    padding: 0;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+    cursor: pointer;
+}
+
+
+.bust, .won {
+    display: none;
+}
+
+.card {
+    width: 100px;
+    /* margin-left: -30px; */
+    /* filter: blur(2px); */
+}
+
+.cardback {
+    text-align: center;
+    border-radius: 4px;
+}
+
+.aviso {
+    /* display: none; */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+
+}
