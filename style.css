@@ -72,13 +72,14 @@ body {
 
 .card {
     width: 100px;
-    /* margin-left: -30px; */
+    /* margin-left: -40px; */
     /* filter: blur(2px); */
 }
 
 .cardback {
     text-align: center;
     border-radius: 4px;
+    width: 98px;
 }
 
 .aviso {
