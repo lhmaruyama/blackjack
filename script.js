@@ -28,9 +28,12 @@ let totalPlayer = 0
 let buttonStart = document.querySelector('.start')
 let buttonStand = document.querySelector('.stand')
 let buttonHit = document.querySelector('.hit')
+let buttonAgain = document.querySelector('.again')
 let dealerContainer = document.querySelector('.dealerContainer')
 let playerContainer = document.querySelector('.playerContainer')
-let warningPlay = document.querySelector('.warning')
+let warning = document.querySelector('.warning')
+let warningPlay = document.querySelector('.play')
+let warningBust = document.querySelector('.bust')
 let buttonsContainer = document.querySelector('.buttonsContainer')
 
 async function getDeck() {
@@ -41,7 +44,7 @@ async function getDeck() {
 }
 getDeck()
 
-buttonStart.onclick = async function () {
+async function getCards() {
     warningPlay.style.display = 'none'
     buttonsContainer.style.display = 'block'
     const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`
@@ -57,7 +60,7 @@ buttonStart.onclick = async function () {
     
     for (let index = 0; index < cards.length; index++) {
         let value = cards[index].code.charAt(0)
-        console.log(value)
+        console.log('Jogo iniciado, cartas distribuídas')
         if(value == '0' || value == 'J' || value == 'Q' || value == 'K'){
             if(index == 0 || index == 1){
                 totalDealer = totalDealer + 10
@@ -85,6 +88,22 @@ buttonStart.onclick = async function () {
 
 }
 
+
+function removeCards(){
+    while(playerContainer.hasChildNodes()){
+        playerContainer.removeChild(playerContainer.firstChild)
+    }
+    while(dealerContainer.hasChildNodes()){
+        dealerContainer.removeChild(dealerContainer.firstChild)
+    }
+    totalDealer = 0
+    totalPlayer = 0
+}
+
+buttonStart.onclick = ()=>{
+    getCards()
+}
+
 buttonHit.onclick = async function(){
 
     const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
@@ -95,7 +114,7 @@ buttonHit.onclick = async function(){
     playerContainer.innerHTML += `<img src='${cards[0].image}' class='card'>`
 
     let value = cards[0].code.charAt(0)
-    console.log(value)
+    console.log('Player pediu uma carta')
     if(value == '0' || value == 'J' || value == 'Q' || value == 'K'){
             totalPlayer = totalPlayer + 10
     }else if (value == 'A'){
@@ -110,4 +129,23 @@ buttonHit.onclick = async function(){
 
     console.log('total dealer = ' + totalDealer)
     console.log('total player = ' + totalPlayer)
+
+    if (totalPlayer > 21){
+        warningBust.style.display = 'block'
+        buttonsContainer.style.display = 'none'
+    }    
 }
+
+
+buttonAgain.onclick = ()=>{
+    warningBust.style.display = 'none'
+    removeCards()
+    getDeck()
+    getCards()
+}
+
+buttonStand.onclick = ()=>{
+
+}
+
+

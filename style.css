@@ -25,9 +25,6 @@ body {
 }
 
 .dealerContainer {
-    color: aliceblue;
-    font-family:var(--font-basic);
-    letter-spacing: .04rem;
     display: block;
     justify-content: center;
 }
@@ -41,11 +38,7 @@ body {
     justify-content: center;
 }
 
-.playerContainer {
-    color: aliceblue;
-    font-family:var(--font-basic);
-    letter-spacing: .04rem;
-}
+
 
 .buttonsContainer {
     display: none;
@@ -64,7 +57,11 @@ body {
     letter-spacing: .04rem;
     cursor: pointer;
 }
-
+.cardsContainer {
+    color: aliceblue;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+}
 
 .bust, .won {
     display: none;
