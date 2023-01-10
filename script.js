@@ -28,12 +28,13 @@ let totalPlayer = 0
 let buttonStart = document.querySelector('.start')
 let buttonStand = document.querySelector('.stand')
 let buttonHit = document.querySelector('.hit')
-let buttonAgain = document.querySelector('.again')
 let dealerContainer = document.querySelector('.dealerContainer')
 let playerContainer = document.querySelector('.playerContainer')
 let warning = document.querySelector('.warning')
 let warningPlay = document.querySelector('.play')
 let warningBust = document.querySelector('.bust')
+let warningWon = document.querySelector('.won')
+let warningTie = document.querySelector('.tie')
 let buttonsContainer = document.querySelector('.buttonsContainer')
 
 async function getDeck() {
@@ -47,7 +48,7 @@ getDeck()
 async function getCards() {
     warningPlay.style.display = 'none'
     buttonsContainer.style.display = 'block'
-    const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=4`
+    const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`
     const response = await fetch(cardsUrl,{mode:'cors'})
     const cardsDetails = await response.json()
     const cards = cardsDetails.cards
@@ -55,26 +56,26 @@ async function getCards() {
     dealerContainer.innerHTML += `<img src='${cards[0].image}' class='card'>`
     //dealerContainer.innerHTML += `<img src='${cards[1].image}' class='card'>`
     dealerContainer.innerHTML += `<img src='./cardback.png' class='card cardback'>`
+    playerContainer.innerHTML += `<img src='${cards[1].image}' class='card'>`
     playerContainer.innerHTML += `<img src='${cards[2].image}' class='card'>`
-    playerContainer.innerHTML += `<img src='${cards[3].image}' class='card'>`
     
     for (let index = 0; index < cards.length; index++) {
         let value = cards[index].code.charAt(0)
         console.log('Jogo iniciado, cartas distribuídas')
         if(value == '0' || value == 'J' || value == 'Q' || value == 'K'){
-            if(index == 0 || index == 1){
+            if(index == 0){
                 totalDealer = totalDealer + 10
             }else{
                 totalPlayer = totalPlayer + 10
             }
         }else if (value == 'A'){
-            if(index == 0 || index == 1){
+            if(index == 0){
                 totalDealer = totalDealer + 11
             }else{
                 totalPlayer = totalPlayer + 11
             }
         }else {
-            if(index == 0 || index == 1){
+            if(index == 0){
                 totalDealer = totalDealer + parseInt(value)
             }else{
                 totalPlayer = totalPlayer + parseInt(value)
@@ -136,16 +137,92 @@ buttonHit.onclick = async function(){
     }    
 }
 
-
-buttonAgain.onclick = ()=>{
+let buttonAgain = ()=>{
     warningBust.style.display = 'none'
+    warningTie.style.display = 'none'
+    warningWon.style.display = 'none'
+
     removeCards()
     getDeck()
     getCards()
 }
 
-buttonStand.onclick = ()=>{
+buttonStand.onclick = async function (){
 
+    buttonsContainer.style.display = 'none'
+    const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    const response = await fetch(cardsUrl,{mode:'cors'})
+    const cardsDetails = await response.json()
+    const cards = cardsDetails.cards
+
+    dealerContainer.removeChild(dealerContainer.lastChild)
+
+    dealerContainer.innerHTML += `<img src='${cards[0].image}' class='card'>`
+
+    let value = cards[0].code.charAt(0)
+
+    if(value == '0' || value == 'J' || value == 'Q' || value == 'K'){
+            totalDealer = totalDealer + 10
+    }else if (value == 'A'){
+        if(totalDealer<21){
+            totalDealer = totalDealer + 11
+        }else{
+            totalDealer = totalDealer + 1
+        }
+    }else {
+        totalDealer = totalDealer + parseInt(value)
+    }
+
+    console.log('total dealer = ' + totalDealer)
+    console.log('total player = ' + totalPlayer)
+
+    dealerTurn()
+    
 }
 
+async function dealerTurn() {
 
+    if(totalDealer >= totalPlayer) {
+
+        warningBust.style.display = 'block'
+
+    }else{
+
+        while(totalDealer < totalPlayer){
+
+            const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+            const response = await fetch(cardsUrl,{mode:'cors'})
+            const cardsDetails = await response.json()
+            const cards = cardsDetails.cards
+
+            dealerContainer.innerHTML += `<img src='${cards[0].image}' class='card'>`
+
+            let value = cards[0].code.charAt(0)
+
+            if(value == '0' || value == 'J' || value == 'Q' || value == 'K'){
+                    totalDealer = totalDealer + 10
+            }else if (value == 'A'){
+                if(totalDealer<21){
+                    totalDealer = totalDealer + 11
+                }else{
+                    totalDealer = totalDealer + 1
+                }
+            }else {
+                totalDealer = totalDealer + parseInt(value)
+            }
+
+            console.log('total dealer = ' + totalDealer)
+            console.log('total player = ' + totalPlayer)
+
+        }
+        
+        if(totalDealer < 21){
+            warningBust.style.display = 'block'
+        }else if(totalDealer > 21){
+            warningWon.style.display = 'block'
+        }else{
+            warningTie.style.display = 'block'
+        }
+    }
+
+}

@@ -6,7 +6,7 @@ body {
     background-color:darkgray
 }
 .tableContainer {
-    height: 500px;
+    height: 600px;
     /* width: 500px; */
     /* background-color:green; */
     /* text-align: center; */
@@ -21,7 +21,13 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-position: top;
-    
+}
+
+.cardsContainer {
+    color: aliceblue;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+    height: 40%;
 }
 
 .dealerContainer {
@@ -36,12 +42,12 @@ body {
     align-content: center;
     align-items: center;
     justify-content: center;
+    height: 10%;
 }
-
-
 
 .buttonsContainer {
     display: none;
+    height: 10%;
 }
 
 .button {
@@ -57,13 +63,8 @@ body {
     letter-spacing: .04rem;
     cursor: pointer;
 }
-.cardsContainer {
-    color: aliceblue;
-    font-family:var(--font-basic);
-    letter-spacing: .04rem;
-}
 
-.bust, .won {
+.bust, .won, .tie {
     display: none;
 }
 
