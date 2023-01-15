@@ -21,6 +21,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-position: top;
+    /* background-attachment: fixed; */
 }
 
 .cardsContainer {
