@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="background"></div>
+    
     <div class="tableContainer">
 
         <div class="cardsContainer">
@@ -15,6 +17,15 @@
             <div class="dealerContainer"></div>
          </div>
         
+         
+         <div class="cardsContainer">
+             PLAYER
+             <div class="playerContainer"></div>
+        </div>
+            
+    </div>
+        
+    <div class="container-warning">
         <h2 class="warning play">CAN WE START?
             <button class="start button">YES!</button>
         </h2>
@@ -27,20 +38,14 @@
         <h2 class="warning tie">TIED GANE!
             <button onclick="buttonAgain()" class="button">TRY AGAIN</button>
         </h2>
+    </div>
 
-        <div class="cardsContainer">
-            PLAYER
-            <div class="playerContainer"></div>
-        </div>
-
-        <div class="buttonsContainer">
-            <button class="hit button">HIT</button>
-            <button class="stand button">STAND</button>
-        </div>
-            
+    <div class="buttonsContainer">
+        <button class="hit button">HIT</button>
+        <button class="stand button">STAND</button>
     </div>
 
     <script src="./script.js"></script>
-
+        
 </body>
 </html>
