@@ -77,9 +77,11 @@ body {
 .bust, .won, .tie {
     display: none;
 }
-
+label {
+    margin: 20px;
+}
 .tableContainer {
-    margin-top: 5%;
+    /* margin-top: 5%; */
     /* margin-bottom: 5%; */
     position: absolute;
     height: 80%;
@@ -100,7 +102,7 @@ body {
 
 .cardsContainer {
 
-    height: 40%;
+    height: 50%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -139,4 +141,17 @@ body {
     text-align: center;
     border-radius: 4px;
     width: 78px;
+}
+@media (min-width: 768px) {
+    .card {
+        width: 100px;
+        /* margin-left: -40px; */
+        /* filter: blur(2px); */
+    }
+    
+    .cardback {
+        text-align: center;
+        border-radius: 4px;
+        width: 98px;
+    }
 }
