@@ -47,7 +47,7 @@ getDeck()
 
 async function getCards() {
     warningPlay.style.display = 'none'
-    buttonsContainer.style.display = 'block'
+    buttonsContainer.style.display = 'flex'
     const cardsUrl = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`
     const response = await fetch(cardsUrl,{mode:'cors'})
     const cardsDetails = await response.json()
@@ -84,8 +84,8 @@ async function getCards() {
         
     }
 
-    console.log('total dealer = ' + totalDealer)
-    console.log('total player = ' + totalPlayer)
+    //console.log('total dealer = ' + totalDealer)
+    //console.log('total player = ' + totalPlayer)
 
 }
 
@@ -132,7 +132,7 @@ buttonHit.onclick = async function(){
     console.log('total player = ' + totalPlayer)
 
     if (totalPlayer > 21){
-        warningBust.style.display = 'block'
+        warningBust.style.display = 'flex'
         buttonsContainer.style.display = 'none'
     }    
 }
@@ -184,7 +184,7 @@ async function dealerTurn() {
 
     if(totalDealer >= totalPlayer) {
 
-        warningBust.style.display = 'block'
+        warningBust.style.display = 'flex'
 
     }else{
 
@@ -217,11 +217,11 @@ async function dealerTurn() {
         }
         
         if(totalDealer < 21){
-            warningBust.style.display = 'block'
+            warningBust.style.display = 'flex'
         }else if(totalDealer > 21){
-            warningWon.style.display = 'block'
+            warningWon.style.display = 'flex'
         }else{
-            warningTie.style.display = 'block'
+            warningTie.style.display = 'flex'
         }
     }
 

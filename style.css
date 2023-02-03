@@ -2,8 +2,13 @@
     --font-basic:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color:darkgray
+    background-color:darkgray;
 }
 
 .background {
@@ -18,54 +23,41 @@ body {
     background-position: center;
     background-position: top;
     /* background-attachment: fixed; */
-}
-.tableContainer {
-    /* height: 600px; */
-    /* width: 500px; */
-    /* width: 100%; */
-    /* background-color:green; */
-    /* text-align: center; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    align-items: center;
-
-}
-
-.cardsContainer {
-    color: aliceblue;
-    font-family:var(--font-basic);
-    letter-spacing: .04rem;
-    height: 40%;
+    z-index: -10;
 }
 
 .container-warning{
     position: absolute;
     height: 100px;
     width: 300px;
-    /* top: 50%; */
-    /* left: 50%; */
-}
+/*     height: 100%;
+    width: 100%; */
+    /* background-color:darkgray; */
+    left: 50%;
+    top: 37.5%;
+    transform: translateX(-50%);
+    /* transform: translateY(-50%); */
 
-.dealerContainer {
-    display: block;
+    /* color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    /* align-items: center; */
     justify-content: center;
+    justify-items: center;
+    /* height: 10%; */
+
 }
 
 .warning {
     color: aliceblue;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    /* align-content: center; */
     align-items: center;
-    justify-content: center;
-    height: 10%;
-}
-
-.buttonsContainer {
-    display: none;
-    height: 10%;
+    /* justify-content: center; */
+    justify-items: center;
+    /* height: 10%; */
 }
 
 .button {
@@ -75,8 +67,8 @@ body {
     border-radius: 10px;
     border: solid 2px aliceblue;
     color: aliceblue;
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
     font-family:var(--font-basic);
     letter-spacing: .04rem;
     cursor: pointer;
@@ -86,8 +78,59 @@ body {
     display: none;
 }
 
+.tableContainer {
+    margin-top: 5%;
+    /* margin-bottom: 5%; */
+    position: absolute;
+    height: 80%;
+    /* width: 500px; */
+    width: 100%;
+    /* background-color:rgb(128, 77, 0); */
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* justify-content: space-around; */
+
+    align-items: center;
+    color: aliceblue;
+    font-family:var(--font-basic);
+    letter-spacing: .04rem;
+}
+
+.cardsContainer {
+
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color:rgb(0, 51, 128); */
+
+}
+
+
+
+.dealerContainer {
+    display: block;
+    justify-content: center;
+}
+
+
+.buttonsContainer {
+    /* position: relative; */
+    position: absolute;
+    bottom: -5%;
+    display: none;
+    justify-content: center;
+    /* justify-items: center; */
+    height: 20%;
+    width: 100%;
+    /* background-color:rgb(0, 128, 0); */
+}
+
 .card {
-    width: 100px;
+    width: 80px;
     /* margin-left: -40px; */
     /* filter: blur(2px); */
 }
@@ -95,15 +138,5 @@ body {
 .cardback {
     text-align: center;
     border-radius: 4px;
-    width: 98px;
-}
-
-.aviso {
-    /* display: none; */
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
-
+    width: 78px;
 }

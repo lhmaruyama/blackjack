@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Cartas</title>
+    <title>Jogo de Cartas (Blackjack)</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="background"></div>
-    
+
     <div class="tableContainer">
 
+        <label>DEALER</label>
+
         <div class="cardsContainer">
-            DEALER
             <div class="dealerContainer"></div>
-         </div>
-        
-         
-         <div class="cardsContainer">
-             PLAYER
-             <div class="playerContainer"></div>
         </div>
+
+        <div class="cardsContainer">
+            <div class="playerContainer"></div>
+        </div>
+
+        <label>PLAYER</label>
             
     </div>
-        
+
+    <div class="buttonsContainer">
+        <button class="hit button">HIT</button>
+        <button class="stand button">STAND</button>
+    </div>
+
     <div class="container-warning">
         <h2 class="warning play">CAN WE START?
             <button class="start button">YES!</button>
@@ -38,11 +44,6 @@
         <h2 class="warning tie">TIED GANE!
             <button onclick="buttonAgain()" class="button">TRY AGAIN</button>
         </h2>
-    </div>
-
-    <div class="buttonsContainer">
-        <button class="hit button">HIT</button>
-        <button class="stand button">STAND</button>
     </div>
 
     <script src="./script.js"></script>
